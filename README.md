@@ -16,7 +16,7 @@ I welcome others to assist me with this project to improve wherever possible, so
 1 - ESP-WROOM-32 ESP32 ESP-32S Development Board <br>
 ??- LiPo batteries TBD<br>
 1 - dog harness TBD<br>
-1 - can of Flex Seal Clear
+1 - can of Flex Seal Clear<br>
 ??- Low voltage wires (cat5 cable works great)
 <br>
 <h3>SMS carriers codes</h3>
