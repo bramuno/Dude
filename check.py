@@ -81,7 +81,12 @@ state = 1
 data = read.split("\n")
 lines = len(data)
 now = datetime.datetime.now()
-lastEvent = data[lines-2]
+if lines-2 < 0:
+    tgt=0
+else:
+    tgt=lines-2
+
+lastEvent = data[tgt]
 nowEpoch = int(datetime.datetime.now().timestamp())
 chk = lastEvent.split(" ")
 readTime = chk[0]+" "+chk[1]+" "+chk[2]
