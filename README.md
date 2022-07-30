@@ -22,3 +22,6 @@ SMS carriers codes:<br><br>
 3 - T-Mobile<br>
 4 - Cricket<br>
 5 - Sprint<br>
+
+Power Consumption:
+I've connected the ESP32 and both sensors to a power meter and the most power it's used is 0.06A, so that's 6ma
