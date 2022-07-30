@@ -1,0 +1,16 @@
+{
+"folderName":"/home/user/dude",
+"logfileName":"dude.log",
+"statusFileName":"status.txt",
+"petName":"Dude",
+"maxF":"95",
+"minF":"50",
+"maxDuration":"20",
+"emailDestination":"user@gmail.com",
+"SMTPuser":"username",
+"SMTPpass":"password",
+"SMTPserver":"smtp.gmail.com",
+"SMTPport":"465",
+"SMS":"8185551234",
+"SMScarrier":"0"
+}
