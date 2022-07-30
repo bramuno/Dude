@@ -13,10 +13,9 @@ const char* ssid     = "SSIDname";     // your network SSID (name of wifi networ
 const char* password = "SSIDpassword"; // your network password
 const char * udpAddress = "192.168.1.100"; // IP address of local syslog server
 const int udpPort = 3333; // listening port on syslog server
+WiFiUDP udp;  // send udp or tcp 
 //////////// no changes below this line
 boolean connected = false; //start in disconnected state
-WiFiUDP udp;
-///////////
 void setup() {
  //Initialize serial and wait for port to open:
  Serial.begin(115200);
