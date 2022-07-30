@@ -61,11 +61,11 @@ float temp1F = (temp1C*9/5) + 32;
 
 // send to listening server
 if(connected){
-    //Send a packet
+    //Send data to syslog server
     udp.beginPacket(udpAddress,udpPort);
-    udp.print(temp0F);
+    udp.print(temp0F);  // for Celcius, change F to C
     udp.print(",");
-    udp.print(temp1F);
+    udp.print(temp1F);  // for Celcius, change F to C
     udp.endPacket();
   }
 
