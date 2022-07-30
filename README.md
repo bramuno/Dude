@@ -11,11 +11,13 @@ Usage and build instructions coming soon...
 I welcome others to assist me with this project to improve wherever possible, so if you would like to collboarte and contribute, please drop me a line.  
 
 <h2>Hardware:</h2>
-1 - Raspberry Pi<br>
+1 - Raspberry Pi/Odroid<br>
 2 - DS18B20 Temperature Sensor<br>
 1 - ESP-WROOM-32 ESP32 ESP-32S Development Board <br>
 ??- LiPo batteries TBD<br>
 1 - dog harness TBD<br>
+1 - can of Flex Seal Clear
+??- Low voltage wires (cat5 cable works great)
 <br>
 <h3>SMS carriers codes</h3>
 0 - Verizon<br>
