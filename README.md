@@ -27,5 +27,5 @@ I welcome others to assist me with this project to improve wherever possible, so
 4 - Cricket<br>
 5 - Sprint<br><br>
 
-Total Power Consumption:
+Total Power Consumption:<br>
 I've connected the <b>ESP32 and both sensors</b> to a power meter and the most power it has used is 60ma, but the average appears to be 30ma.   This does not include the raspberry pi. 
