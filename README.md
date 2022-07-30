@@ -8,17 +8,17 @@ Usage and build instructions coming soon...
 
 I welcome others to assist me with this project to improve wherever possible, so if you would like to collboarte and contribute, please drop me a line.  
 
-Hardware:
-1 - Raspberry Pi 
-2 - DS18B20 Temperature Sensor
-1 - ESP-WROOM-32 ESP32 ESP-32S Development Board 
-??- LiPo batteries TBD
-1 - dog harness TBD
-
-SMS carriers codes:
-0 - Verizon
-1 - AT&T
-2 - Boost
-3 - T-Mobile
-4 - Cricket
-5 - Sprint
+Hardware:<br>
+1 - Raspberry Pi<br>
+2 - DS18B20 Temperature Sensor<br>
+1 - ESP-WROOM-32 ESP32 ESP-32S Development Board <br>
+??- LiPo batteries TBD<br>
+1 - dog harness TBD<br>
+<br>
+SMS carriers codes:<br><br>
+0 - Verizon<br>
+1 - AT&T<br>
+2 - Boost<br>
+3 - T-Mobile<br>
+4 - Cricket<br>
+5 - Sprint<br>
