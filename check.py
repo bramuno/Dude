@@ -72,10 +72,6 @@ if debug == 1:
 f = open(logfile, "r")
 read = f.read()
 f.close()
-# clear data log
-f = open(logfile, "w")
-f.write("")
-f.close()
 #
 state = 1
 data = read.split("\n")
@@ -200,3 +196,7 @@ f = open(statusFile, "w")
 f.write(output)
 f.close()
 sys.exit()
+# clear data log and add the last event
+f = open(logfile, "w")
+f.write(lastEvent)
+f.close()
