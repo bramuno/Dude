@@ -11,13 +11,17 @@ Usage and build instructions coming soon...
 I welcome others to assist me with this project to improve wherever possible, so if you would like to collboarte and contribute, please drop me a line.  
 
 <h2>Hardware:</h2>
+links provided here are only examples as you can swap out brands as needed to save money as long as the part does what it required, any by all means if you can find it somewhere else then you don't need amazon :)<br>
 1 - Raspberry Pi/Odroid<br>
 2 - DS18B20 Temperature Sensor<br>
 1 - ESP-WROOM-32 ESP32 ESP-32S Development Board <br>
-??- LiPo batteries TBD<br>
+??- LiPo batteries, 3.7vdc TBD<br>
 1 - dog harness TBD<br>
-1 - can of Flex Seal Clear<br>
+1 - can of <a href="https://a.co/d/3PqRW9W">Flex Seal Clear</a><br>
 ??- Low voltage wires (cat5 cable works great)
+1 - toggle switch <a href="https://www.amazon.com/s?k=arduino+toggle+switch+3-pole&crid=1M6LX2AWXVDJG&sprefix=arduino+toggle+switch+3-pol%2Caps%2C154&ref=nb_sb_noss">3-pole</a> any style is ok<br>
+1 - <a href="https://a.co/d/4tNPrfw">solderable breadboard</a> (optional for experienced users)<br>
+
 <br>
 <h3>SMS carriers codes</h3>
 0 - Verizon<br>
