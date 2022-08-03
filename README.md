@@ -18,7 +18,7 @@ links provided here are only examples as you can swap out brands as needed to sa
 ??- LiPo batteries, 3.7vdc TBD<br>
 1 - dog harness TBD<br>
 1 - can of <a href="https://a.co/d/3PqRW9W">Flex Seal Clear</a><br>
-??- Low voltage wires (cat5 cable works great)
+??- Low voltage wires (cat5 cable works great)<br>
 1 - toggle switch <a href="https://www.amazon.com/s?k=arduino+toggle+switch+3-pole&crid=1M6LX2AWXVDJG&sprefix=arduino+toggle+switch+3-pol%2Caps%2C154&ref=nb_sb_noss">3-pole</a> any style is ok<br>
 1 - <a href="https://a.co/d/4tNPrfw">solderable breadboard</a> (optional for experienced users)<br>
 
