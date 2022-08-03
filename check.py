@@ -1,36 +1,39 @@
 #!/bin/python
 import os, sys, json, subprocess, smtplib, datetime, time, pdb
 from email.message import EmailMessage
-# pull conifg data from config.json file
+import RPi.GPIO as GPIO
 f = open("/home/brain/config.json", "r")
 try:
     get = json.load(f)
 except:
     sys.exit("Config.json load failed.\n")
-#
+
 f.close()
 petName = get['petName']
 folderName =  get['folderName']
 logfileName =  get['logfileName']
 statusFileName =  get['statusFileName']
-max =  int(get['maxF'])
-min =  int(get['minF'])
+maxTemp =  float(get['maxTemp'])
+minTemp =  float(get['minTemp'])
+tempUnit =  str(get['tempUnit'])
 maxDuration =  int(get['maxDuration'])
 emailDestination =  get['emailDestination']
 SMTPuser =  get['SMTPuser']
 SMTPpass =  get['SMTPpass']
 SMTPserver =  get['SMTPserver']
 SMTPport =  int(get['SMTPport'])
-SMS =  get['SMS']
+SMS = get['SMS']
 SMScarrier =  int(get['SMScarrier'])
-#
-debug = 0
+
+debug = 1
+newfile = 0
 car=["@vtext.com","@txt.att.net","@sms.myboostmobile.com","@tmomail.net","@sms.cricketwireless.net","@messaging.sprintpcs.com" ]
 smsEmailDest = SMS+car[SMScarrier]
 logfile = folderName+"/"+logfileName
 statusFile = folderName+"/"+statusFileName
 cmd = "mkdir -p "+str(folderName)
 subprocess.check_output(cmd, shell=True)
+lastSeen = 0
 
 f = open(statusFile, "r")
 try:
@@ -63,13 +66,14 @@ if oldStatus == "" and oldState == "" and oldDur == "":
 if debug == 1: 
     print("oldState = "+str(oldState))
     print("oldDur = "+str(oldDur))
-    print("max = ",str(max))
-    print("min = ",str(min))
+    print("maxTemp = ",str(maxTemp))
+    print("minTemp = ",str(minTemp))
     print("maxDuration = ",str(maxDuration))
     print("newfile = ",str(newfile))
 
 # open data log
 f = open(logfile, "r")
+empty=0
 read = f.read()
 f.close()
 #
@@ -84,6 +88,7 @@ else:
 
 lastEvent = data[tgt]
 nowEpoch = int(datetime.datetime.now().timestamp())
+lastEvent = lastEvent.replace("  "," ")
 chk = lastEvent.split(" ")
 readTime = chk[0]+" "+chk[1]+" "+chk[2]
 mo=str(chk[0])
@@ -104,14 +109,15 @@ minsSinceLastLog = round((secSinceLastLog/60),1)
 if diffEpoch < 0:
     diffEpoch = 0;
 
-if int(secSinceLastLog) < 0:
+if float(secSinceLastLog) < 0:
     secSinceLastLog = 0
 
 diffMins = float(round(diffEpoch/60,2))
 temp=chk[4].split(",")
-if ( float(temp[0]) > float(max) and float(temp[1]) > float(max) ) or ( float(temp[0]) < float(min) and float(temp[1]) < float(min) )  :
+if ( float(temp[0]) > float(maxTemp) and float(temp[1]) > float(maxTemp) ) or ( float(temp[0]) < float(minTemp) and float(temp[1]) < float(minTemp) )  :
     state = 0
 
+reading = str(temp[0])+","+str(temp[1])
 avg = ( float(temp[0]) + float(temp[1]) ) /2
 avg = round(avg,1)
 if int(state) == 1:
@@ -136,14 +142,15 @@ if round(minsSinceLastLog,0) > 5 and int(minute)%5 == 0:
         print(">>>>> email alert sent")  
 
 ########## critical temperature alert begin
-if ( int(oldState) == 0 and int(oldDur) > float(maxDuration-1) ) :
+if ( state != 1 and int(oldState) == 0 and float(oldDur) > float(maxDuration) ) :
     alert = 1
     msgCritical = EmailMessage()
-    msgCritical.set_content("\nHarness temperature outside desired threshold for at least "+str(oldDur)+" minutes.\nsensorA="+str(float(temp[0]))+"\nsensorB:"+str(float(temp[1]))+"\n\n"+str(oldState)+"==0 &&"+str(oldDur)+">"+str(maxDuration)+"\n")
-    msgCritical['Subject'] = petName+" has been in ~"+str(avg)+" temperature for at least "+str(oldDur)+" minutes!"
+    msgCritical.set_content("\nHarness temperature outside desired threshold for at least "+str(oldDur)+" minutes.\n\nsensorA="+str(float(temp[0]))+tempUnit+"\nsensorB:"+str(float(temp[1]))+tempUnit)
+    msgCritical['Subject'] = petName+" has been in "+str(avg)+tempUnit+" degree temperature for at least "+str(oldDur)+" minutes!"
     msgCritical['From'] = emailDestination
     msgCritical['To'] = emailDestination+","+smsEmailDest
     server = smtplib.SMTP_SSL(SMTPserver, SMTPport)
+    server.set_debuglevel(0)
     server.connect(SMTPserver,SMTPport)
     server.ehlo()
     server.login(SMTPuser, SMTPpass)
@@ -154,10 +161,10 @@ if ( int(oldState) == 0 and int(oldDur) > float(maxDuration-1) ) :
 ########## critical temperature alert end
 #
 ## alert sensor online but reading incorrectly
-if float(temp[0]) < -60 or float(temp[1]) < -60:
+if ( float(temp[0]) < -60.0 or float(temp[1]) < -60.0 ) and int(minute)%5 == 0 :
     glitchMSG = EmailMessage()
-    glitchMSG.set_content("\nA sensor is not reading correctly:\nsensorA="+str(float(temp[0]))+"\nsensorB:"+str(float(temp[1]))+"\n")
-    glitchMSG['Subject'] = 'A sensor is not reading correctly'
+    glitchMSG.set_content("\nA harness sensor is not reading correctly:\n\nsensorA="+str(float(temp[0]))+"\nsensorB:"+str(float(temp[1]))+"\n")
+    glitchMSG['Subject'] = 'A harness sensor is not reading correctly'
     glitchMSG['From'] = "alert@temperatureMon.org"
     glitchMSG['To'] = emailDestination+","+smsEmailDest
     server = smtplib.SMTP_SSL(SMTPserver, SMTPport)
@@ -177,20 +184,20 @@ if debug == 1:
     print("diffMins = ",str(diffMins))
     print("newDur = ",str(newDur))
     print("minsSinceLastLog = ",str(minsSinceLastLog))
-    print("minute = ",str(minute))
+    print("thisMinute = ",str(minute))
 #
 if newfile == 1:
-    output = '{"lastSeen":"'+str(nowEpoch)+'","state":"'+str(state)+'","duration":"0" }'
-    if debug == 1:
-        print("\nnewfile\n")
+    newDur = "0"
+    lastSeen = str(nowEpoch)
+    if debug == 1:``
+        print("\nnew status file created\n")
 else:
-    if state == 0:
-        output = '{"lastSeen":"'+str(logEpoch)+'","state":"'+str(state)+'","duration":"'+str(newDur)+'" }'
-    else:
-        output = '{"lastSeen":"'+str(logEpoch)+'","state":"'+str(state)+'","duration":"0"}'
-#
-if debug == 1:
-    print(output)
+    lastSeen = str(logEpoch)
+    if state == 1:
+        newDur = "0"
+
+output = '{"lastSeen":"'+str(lastSeen)+'","state":"'+str(state)+'","duration":"'+str(newDur)+'","lastTemp":"'+reading+'","minsSinceLastLog":"'+str(minsSinceLastLog)+'" }'
+print(output)
 #
 f = open(statusFile, "w")
 f.write(output)
