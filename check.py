@@ -2,7 +2,7 @@
 import os, sys, json, subprocess, smtplib, datetime, time, pdb
 from email.message import EmailMessage
 import RPi.GPIO as GPIO
-f = open("/home/brain/config.json", "r")
+f = open("/home/folder/config.json", "r")
 try:
     get = json.load(f)
 except:
