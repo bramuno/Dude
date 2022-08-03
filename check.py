@@ -29,7 +29,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(4, GPIO.OUT)          
 GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(4, GPIO.OUT, initial=GPIO.LOW)
-if GPIO.input(17) == 0:
+if int(GPIO.input(17)) == 0:
     sys.exit("Detected OFF switch position on syslog server. Quitting.\n")
 debug = 1
 newfile = 0
