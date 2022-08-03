@@ -25,10 +25,6 @@ SMTPport =  int(get['SMTPport'])
 SMS = get['SMS']
 SMScarrier =  int(get['SMScarrier'])
 
-GPIO.setmode(GPIO.BCM)     
-GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-if int(GPIO.input(17)) == 0:
-    sys.exit("Detected OFF switch position on syslog server. Quitting.\n")
 debug = 1
 newfile = 0
 car=["@vtext.com","@txt.att.net","@sms.myboostmobile.com","@tmomail.net","@sms.cricketwireless.net","@messaging.sprintpcs.com" ]
@@ -81,6 +77,13 @@ empty=0
 read = f.read()
 f.close()
 #
+GPIO.setmode(GPIO.BCM)     
+GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+if int(GPIO.input(17)) == 0:
+    f = open(logfile, "r")
+    f.write("")
+    f.close()
+    sys.exit("Detected OFF switch position on syslog server. Quitting.\n")
 state = 1
 data = read.split("\n")
 lines = len(data)
