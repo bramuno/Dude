@@ -26,6 +26,8 @@ links provided here are only examples as you can swap out brands as needed to sa
 1 - basic LED (optional)<br>
 <br> <br>
 Optional replacement hardware: <br>
+
+ELEGOO Electronic Fun Kit Bundle with Breadboard Cable Resistor, Capacitor, LED, Potentiometer (235 Items) for Arduino, Respberry Pi https://a.co/d/bWZt9zZ <br>
 TBD<br>
 <br>
 <h3>SMS carriers codes</h3>
