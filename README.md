@@ -2,7 +2,7 @@ Under construction...
 
 Dude's Harness (tenative title) 
 
-This project is designed to be a failsafe for forgetful pet owners like myself.  Once upon ago, I accidentally left my 15yo dog, Dude, out in the Phoenix summer heat for several hours and he ended up dying from heat stroke. Sadly this is not an uncommon thing in these extreme heat climates.  I thought of this project years ago but never got around to it, so hopefully this will save someone's pet from the same accident. 
+This project is designed to be a failsafe for forgetful pet owners like myself.  Once upon ago, I accidentally left my 15yo dog, Dude, out in the Phoenix summer heat for several hours and he ended up dying from heat stroke. Sadly this is not an uncommon thing in these extreme heat climates but this could happen anywhere.  I thought of this project years ago but never got around to it, so hopefully this will save someone's pet from the same accident. 
 
 This project uses an ESP32 wifi development board connected to two DS18B20 temperature sensors to constantly send temperature readings to a syslog server on the user's home network.  The syslog server runs a cron script to monitor the termperature and alert the user if both sensors have been exceeded the temperature threshold for too long a time period.   
 
