@@ -77,13 +77,6 @@ empty=0
 read = f.read()
 f.close()
 #
-GPIO.setmode(GPIO.BCM)     
-GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-if int(GPIO.input(17)) == 0:
-    f = open(logfile, "r")
-    f.write("")
-    f.close()
-    sys.exit("Detected OFF switch position on syslog server. Quitting.\n")
 state = 1
 data = read.split("\n")
 lines = len(data)
@@ -118,6 +111,14 @@ if diffEpoch < 0:
 
 if float(secSinceLastLog) < 0:
     secSinceLastLog = 0
+
+GPIO.setmode(GPIO.BCM)     
+GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+if int(GPIO.input(17)) == 0:
+    f = open(logfile, "r")
+    f.write(lastEvent)
+    f.close()
+    sys.exit("Detected OFF switch position on syslog server. Quitting.\n")
 
 diffMins = float(round(diffEpoch/60,2))
 temp=chk[4].split(",")
