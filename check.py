@@ -196,7 +196,7 @@ if debug == 1:
 if newfile == 1:
     newDur = "0"
     lastSeen = str(nowEpoch)
-    if debug == 1:``
+    if debug == 1:
         print("\nnew status file created\n")
 else:
     lastSeen = str(logEpoch)
