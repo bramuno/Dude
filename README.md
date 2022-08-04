@@ -20,14 +20,14 @@ links provided here are only examples as you can swap out brands as needed to sa
 1 - can of <a href="https://a.co/d/3PqRW9W">Flex Seal Clear</a><br>
 ??- Low voltage wires (cat5 cable works great)<br>
 3 - M to F <a href="https://a.co/d/5lMv7FR">jumper wires</a> but if you dont have any, it's cheaper to get the <a href="https://a.co/d/bJQuteo">multi-pack</a><br>
-1 - <a href="https://a.co/d/dl4wDO9">lighted toggle switch 3-pole</a> any style is ok<br>
+1 - <a href="https://a.co/d/dl4wDO9">lighted toggle switch 3-pole</a> any style is ok as long as its an 3-pole<br>
 1 - <a href="https://a.co/d/bAP9Ayc">solderable breadboard hat</a><br>
 2 - 200ohm resistor<br>
 1 - basic LED (optional)<br>
 <br> <br>
 Optional replacement hardware: <br>
-
-ELEGOO Electronic Fun Kit Bundle with Breadboard Cable Resistor, Capacitor, LED, Potentiometer (235 Items) for Arduino, Respberry Pi https://a.co/d/bWZt9zZ <br>
+If you've never done a project like this and don't have any of the items listed above, here is a starter kit that has the M-F cables, low-voltage wires, a temporary breadbaoard, LEDs and resistors.  <br>
+ELEGOO Electronic Fun Kit for Arduino, Respberry Pi https://a.co/d/bWZt9zZ <br>
 TBD<br>
 <br>
 <h3>SMS carriers codes</h3>
