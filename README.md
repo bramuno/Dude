@@ -21,8 +21,12 @@ links provided here are only examples as you can swap out brands as needed to sa
 ??- Low voltage wires (cat5 cable works great)<br>
 3 - M to F <a href="https://a.co/d/5lMv7FR">jumper wires</a> but if you dont have any, it's cheaper to get the <a href="https://a.co/d/bJQuteo">multi-pack</a><br>
 1 - toggle switch <a href="https://www.amazon.com/s?k=arduino+toggle+switch+3-pole&crid=1M6LX2AWXVDJG&sprefix=arduino+toggle+switch+3-pol%2Caps%2C154&ref=nb_sb_noss">3-pole</a> any style is ok<br>
-1 - <a href="https://a.co/d/4tNPrfw">solderable breadboard</a> (optional for experienced users)<br>
-
+1 - <a href="https://a.co/d/bAP9Ayc">solderable breadboard hat</a><br>
+2 - 200ohm resistor<br>
+1 - basic LED (optional)<br>
+<br> <br>
+Optional replacement hardware: <br>
+TBD<br>
 <br>
 <h3>SMS carriers codes</h3>
 0 - Verizon<br>
