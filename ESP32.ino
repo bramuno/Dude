@@ -69,7 +69,7 @@ if(connected){
     udp.endPacket();
   }
 
- delay(60 000); 
+ delay(5000); 
 }
 
 void connectToWiFi(const char * ssid, const char * pwd){
